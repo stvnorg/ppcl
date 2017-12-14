@@ -32,7 +32,6 @@ def process_request(t):
 			PROCESS[i].set(100)
 		else:
 			PROCESS[i].set(0)
-
 	time.sleep(t)
 
 if __name__ == '__main__':
