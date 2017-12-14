@@ -8,7 +8,6 @@ Written by Steven Stevanus (https://github.com/stvnorg)
 """
 
 from prometheus_client import Gauge, start_http_server
-import random
 import time
 import os
 
@@ -30,16 +29,9 @@ def process_request(t):
 	for i in range(len(PROCESS)):
 		checkPort = os.popen('sudo netstat -tulpn | grep ' + PORTS[i])
 		if (len(checkPort.readlines())):
-			PROCESS[i].set(1)
+			PROCESS[i].set(100)
 		else:
 			PROCESS[i].set(0)
-
-	# Check app_memberarea_staging status
-	#checkPort = os.popen('sudo netstat -tulpn | grep 6767')
-	#if (not len(checkPort.readlines())):
-	#	app_memberarea_staging.set(0)
-	#else:
-	#	app_memberarea_staging.set(1)
 
 	time.sleep(t)
 
